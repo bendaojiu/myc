@@ -3,9 +3,9 @@
 #include <stdlib.h>
 
 /*
-ÓĞÒ»¸ö×Ö·û´®·ûºÏÒÔÏÂÌØÕ÷£¨¡± "abcd11111abcd2222abcdqqqqq"¡±£©,ÒªÇóĞ´Ò»¸öº¯Êı£¨½Ó¿Ú£©£¬Êä³öÒÔÏÂ½á¹û
-1£©	Çó×Ö·û´®×Ö´®£¨¡°abcd¡±£©³öÏÖµÄ´ÎÊı£¬²¢°Ñ½á¹û´«³ö£»
-2£©	°Ñ×Ö·û´®Ìæ»»³É£¨dcba11111dcba2222dcbaqqqqq£©£¬²¢°Ñ½á¹û´«³ö¡£
+æœ‰ä¸€ä¸ªå­—ç¬¦ä¸²ç¬¦åˆä»¥ä¸‹ç‰¹å¾ï¼ˆâ€ "abcd11111abcd2222abcdqqqqq"â€ï¼‰,è¦æ±‚å†™ä¸€ä¸ªå‡½æ•°ï¼ˆæ¥å£ï¼‰ï¼Œè¾“å‡ºä»¥ä¸‹ç»“æœ
+1ï¼‰	æ±‚å­—ç¬¦ä¸²å­—ä¸²ï¼ˆâ€œabcdâ€ï¼‰å‡ºç°çš„æ¬¡æ•°ï¼Œå¹¶æŠŠç»“æœä¼ å‡ºï¼›
+2ï¼‰	æŠŠå­—ç¬¦ä¸²æ›¿æ¢æˆï¼ˆdcba11111dcba2222dcbaqqqqqï¼‰ï¼Œå¹¶æŠŠç»“æœä¼ å‡ºã€‚
 */
 
 int strfreplace(char *inbuf, char *str1, char *str2, int *times, char **outbuf)
@@ -15,19 +15,19 @@ int strfreplace(char *inbuf, char *str1, char *str2, int *times, char **outbuf)
 	if (inbuf == NULL)
 	{
 		ret = -1;
-		printf("´«Èë×Ö·û´®inbuf²»ÄÜÎª¿Õ\n");
+		printf("ä¼ å…¥å­—ç¬¦ä¸²inbufä¸èƒ½ä¸ºç©º\n");
 		return ret;
 	}
 	if (times == NULL)
 	{
 		ret = -2;
-		printf("½ÓÊÕ´ÎÊıµØÖ·²»ÄÜÎª¿Õ\n");
+		printf("æ¥æ”¶æ¬¡æ•°åœ°å€ä¸èƒ½ä¸ºç©º\n");
 		return ret;
 	}
 	if (outbuf == NULL)
 	{
 		ret =-3;
-		printf("½ÓÊÕÌæ»»ºóµÄ×Ö·û´®µØÖ·outbuf²»ÄÜÎª¿Õ\n");
+		printf("æ¥æ”¶æ›¿æ¢åçš„å­—ç¬¦ä¸²åœ°å€outbufä¸èƒ½ä¸ºç©º\n");
 		return ret;
 	}
 	tmpTostart = inbuf;
@@ -43,7 +43,7 @@ int strfreplace(char *inbuf, char *str1, char *str2, int *times, char **outbuf)
 	if (out == NULL)
 	{
 		ret = -4;
-		printf("ÄÚ²¿´íÎó¡£¡£¡£out·ÖÅäÄÚ´æ³ö´í\n");
+		printf("å†…éƒ¨é”™è¯¯ã€‚ã€‚ã€‚outåˆ†é…å†…å­˜å‡ºé”™\n");
 		return ret;
 	}
 	
@@ -78,7 +78,7 @@ int strfreplace(char *inbuf, char *str1, char *str2, int *times, char **outbuf)
 		
 	}
 	memcpy(*outbuf, out, strlen(out));
-	//printf("%d   %d", sizeof(out), strlen(out)); //ÎªÊ²Ã´ÏÔÊ¾µÄ²»Ò»Ñù£¡£¡£¡£¡
+	//printf("%d   %d", sizeof(out), strlen(out)); //ä¸ºä»€ä¹ˆæ˜¾ç¤ºçš„ä¸ä¸€æ ·ï¼ï¼ï¼ï¼æ˜¯æŒ‡é’ˆï¼ŒæŒ‡é’ˆå°±æ˜¯4å­—èŠ‚ï¼Œæ‰€ä»¥sizeofæ˜¯4
 	*(*outbuf + strlen(out)) = 0;
 	*times = i;
 
@@ -95,12 +95,12 @@ void main()
 	ret = strfreplace(inbuf, str1, str2, &times, &outbuf);
 	if (ret == 0)
 	{
-		printf("¹²³öÏÖ%d´Î\n", times);
-		printf("Ìæ»»Ö®ºóµÄ×Ö·û´®ÊÇ:%s\n", outbuf);
+		printf("å…±å‡ºç°%dæ¬¡\n", times);
+		printf("æ›¿æ¢ä¹‹åçš„å­—ç¬¦ä¸²æ˜¯:%s\n", outbuf);
 	}
 	else if (ret == 1)
 	{
-		printf("¸Ã×Ö·û´®Ã»ÓĞ³öÏÖ\n");
+		printf("è¯¥å­—ç¬¦ä¸²æ²¡æœ‰å‡ºç°\n");
 	}
 	if (outbuf != NULL)
 	{
